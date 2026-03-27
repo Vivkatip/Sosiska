@@ -1,20 +1,18 @@
-﻿import streamlit as st
+import streamlit as st
 import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
 
 st.set_page_config(page_title="CVA Generator 2026", page_icon="⚡", layout="wide")
 
-# ============================================================
 # КОМАНДА
-# ============================================================
+
 TEAM_NAME = "SINGULARITY"
 TEAM_LOGO = "🚀"
 CURRENT_YEAR = "2026"
 
-# ============================================================
+
 # ДАННЫЕ ИНГИБИТОРОВ
-# ============================================================
 INHIBITORS = {
     "inh_1 (2-Mercaptobenzothiazole)": {
         "id": 0,
@@ -46,9 +44,8 @@ INHIBITORS = {
     }
 }
 
-# ============================================================
 # CSS ДЛЯ ТЕМНОГО ФОНА
-# ============================================================
+
 st.markdown("""
 <style>
     .stApp {
@@ -116,9 +113,9 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# ============================================================
+
 # ФУНКЦИИ
-# ============================================================
+
 def generate_curve(inhibitor_id, concentration):
     voltage = np.linspace(-1.2, 1.2, 1000)
     conc_factor = np.exp(-concentration / 500)
@@ -174,7 +171,7 @@ def calculate_protection_efficiency(inhibitor_id, concentration, current_ratio, 
         color = "#ffa94d"
         icon = "⚠️"
     else:
-        level = "Недостаточная защита"
+        level = "Плохая защита"
         color = "#ff6b6b"
         icon = "❌"
     
@@ -298,9 +295,9 @@ def create_charge_pie_chart(anodic_charge, cathodic_charge):
     
     return fig
 
-# ============================================================
+
 # ОСНОВНОЙ ИНТЕРФЕЙС
-# ============================================================
+
 def main():
     # Заголовок
     st.markdown(f"""
